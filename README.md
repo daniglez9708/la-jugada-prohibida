@@ -1,1 +1,0 @@
-# la-jugada-prohibida
