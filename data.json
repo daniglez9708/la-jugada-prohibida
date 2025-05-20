@@ -14,6 +14,7 @@
       "goal_no_goal": 1.85
     },
     {
+      "fecha": "Miércoles, 22 de mayo",
       "hora": "21:00",
       "liga": "La Liga",
       "local": "Barcelona",
@@ -26,9 +27,10 @@
       "goal_no_goal": 2.10
     },
     {
+      "fecha": "Miércoles, 22 de mayo",
       "hora": "20:30",
       "liga": "Bundesliga",
-      "local": "Bayern Múnich",
+      "local": "Bayern München",
       "visitante": "Wolfsburgo",
       "cuota_local": 1.20,
       "cuota_empate": 6.00,
