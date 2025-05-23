@@ -16,8 +16,10 @@
     h1 {
       text-align: center;
       padding: 20px;
-      background: #1f1f1f;
+      background: linear-gradient(90deg, #FFA500, #00FF00, #00FFFF);
+      color: black;
       margin: 0;
+      font-weight: bold;
     }
 
     .aviso-hora {
@@ -33,9 +35,13 @@
       border-collapse: collapse;
       margin-top: 20px;
       color: white;
+      overflow-x: auto;
+      display: block;
+      white-space: nowrap;
     }
 
     th, td {
+      min-width: 100px;
       padding: 10px;
       text-align: center;
       border-bottom: 1px solid #333;
@@ -75,29 +81,8 @@
     }
 
     @media (max-width: 600px) {
-      table, thead, tbody, th, td, tr {
-        display: block;
-      }
-
-      th {
-        display: none;
-      }
-
-      tr {
-        margin-bottom: 15px;
-      }
-
-      td {
-        text-align: right;
-        position: relative;
-        padding-left: 50%;
-      }
-
-      td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 10px;
-        font-weight: bold;
+      table {
+        font-size: 14px;
       }
     }
   </style>
@@ -111,50 +96,214 @@
 <table id="tabla-partidos">
   <thead>
     <tr>
-      <th data-label="Hora">Hora</th>
-      <th data-label="Liga">Liga</th>
-      <th data-label="Local">Local</th>
-      <th data-label="Visitante">Visitante</th>
-      <th data-label="1">1</th>
-      <th data-label="X">X</th>
-      <th data-label="2">2</th>
-      <th data-label="1X">1X</th>
-      <th data-label="X2">X2</th>
-      <th data-label="12">12 (✅)</th>
+      <th>Hora</th>
+      <th>Liga</th>
+      <th>Local</th>
+      <th>Visitante</th>
+      <th>1</th>
+      <th>X</th>
+      <th>2</th>
+      <th>1X</th>
+      <th>X2</th>
+      <th>12</th>
+      <th>U1.5</th>
+      <th>O1.5</th>
+      <th>U2.5</th>
+      <th>O2.5</th>
+      <th>U3.5</th>
+      <th>O3.5</th>
+      <th>G</th>
+      <th>NG</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td data-label="Hora">16:00</td><td data-label="Liga">URU2</td><td data-label="Local">Ca Artigas</td><td data-label="Visitante">Fenix Montevideo</td><td data-label="1">2.85</td><td data-label="X">2.85</td><td data-label="2">2.09</td><td data-label="1X">1.47</td><td data-label="X2">1.25</td><td data-label="12">1.25</td></tr>
-    <tr><td data-label="Hora">16:45</td><td data-label="Liga">ITA1</td><td data-label="Local">Atalanta</td><td data-label="Visitante">Parma</td><td data-label="1">1.62</td><td data-label="X">3.56</td><td data-label="2">4.75</td><td data-label="1X">1.14</td><td data-label="X2">2.04</td><td data-label="12">1.24</td></tr>
-    <tr><td data-label="Hora">16:45</td><td data-label="Liga">ITA1</td><td data-label="Local">Lazio</td><td data-label="Visitante">Lecce</td><td data-label="1">1.50</td><td data-label="X">3.33</td><td data-label="2">6.65</td><td data-label="1X">1.07</td><td data-label="X2">2.23</td><td data-label="12">1.26</td></tr>
-    <tr><td data-label="Hora">16:45</td><td data-label="Liga">ITA1</td><td data-label="Local">Torino</td><td data-label="Visitante">Roma</td><td data-label="1">5.46</td><td data-label="X">3.80</td><td data-label="2">1.50</td><td data-label="1X">2.19</td><td data-label="X2">1.11</td><td data-label="12">1.21</td></tr>
-    <tr><td data-label="Hora">16:45</td><td data-label="Liga">ITA1</td><td data-label="Local">Udinese</td><td data-label="Visitante">Fiorentina</td><td data-label="1">3.56</td><td data-label="X">3.42</td><td data-label="2">1.85</td><td data-label="1X">1.71</td><td data-label="X2">1.24</td><td data-label="12">1.26</td></tr>
-    <tr><td data-label="Hora">17:00</td><td data-label="Liga">USA1</td><td data-label="Local">New York City</td><td data-label="Visitante">Chicago Fire</td><td data-label="1">1.90</td><td data-label="X">3.56</td><td data-label="2">3.09</td><td data-label="1X">1.28</td><td data-label="X2">1.71</td><td data-label="12">1.22</td></tr>
-    <tr><td data-label="Hora">17:15</td><td data-label="Liga">CIL2</td><td data-label="Local">Union San Felipe</td><td data-label="Visitante">Universidad De Concepcion</td><td data-label="1">2.33</td><td data-label="X">2.85</td><td data-label="2">2.66</td><td data-label="1X">1.33</td><td data-label="X2">1.42</td><td data-label="12">1.28</td></tr>
-    <tr><td data-label="Hora">17:15</td><td data-label="Liga">ISL1</td><td data-label="Local">FH Hafnarfjordur</td><td data-label="Visitante">Breidablik</td><td data-label="1">3.09</td><td data-label="X">3.56</td><td data-label="2">1.81</td><td data-label="1X">1.71</td><td data-label="X2">1.24</td><td data-label="12">1.18</td></tr>
-    <tr><td data-label="Hora">18:30</td><td data-label="Liga">ECU1</td><td data-label="Local">Tecnico Universitario</td><td data-label="Visitante">Delfin SC</td><td data-label="1">1.50</td><td data-label="X">3.23</td><td data-label="2">5.00</td><td data-label="1X">1.06</td><td data-label="X2">2.02</td><td data-label="12">1.19</td></tr>
-    <tr><td data-label="Hora">19:00</td><td data-label="Liga">COL1</td><td data-label="Local">America Cali</td><td data-label="Visitante">Independiente Medellin</td><td data-label="1">2.19</td><td data-label="X">2.47</td><td data-label="2">3.42</td><td data-label="1X">1.20</td><td data-label="X2">1.48</td><td data-label="12">1.38</td></tr>
-    <tr><td data-label="Hora">19:00</td><td data-label="Liga">COL1</td><td data-label="Local">Bucaramanga</td><td data-label="Visitante">Pasto</td><td data-label="1">2.09</td><td data-label="X">2.85</td><td data-label="2">3.09</td><td data-label="1X">1.25</td><td data-label="X2">1.53</td><td data-label="12">1.29</td></tr>
-    <tr><td data-label="Hora">19:00</td><td data-label="Liga">COL1</td><td data-label="Local">Alianza Fc Valledupar</td><td data-label="Visitante">Santa Fe</td><td data-label="1">2.14</td><td data-label="X">2.76</td><td data-label="2">3.09</td><td data-label="1X">1.25</td><td data-label="X2">1.50</td><td data-label="12">1.31</td></tr>
-    <tr><td data-label="Hora">19:00</td><td data-label="Liga">COL1</td><td data-label="Local">Once Caldas</td><td data-label="Visitante">Deportivo Cali</td><td data-label="1">1.57</td><td data-label="X">3.23</td><td data-label="2">5.00</td><td data-label="1X">1.09</td><td data-label="X2">2.02</td><td data-label="12">1.23</td></tr>
-    <tr><td data-label="Hora">20:00</td><td data-label="Liga">MONDCL</td><td data-label="Local">Palmeiras</td><td data-label="Visitante">Porto</td><td data-label="1">2.57</td><td data-label="X">3.09</td><td data-label="2">2.38</td><td data-label="1X">1.45</td><td data-label="X2">1.39</td><td data-label="12">1.28</td></tr>
-    <tr><td data-label="Hora">00:00</td><td data-label="Liga">MONDCL</td><td data-label="Local">Botafogo</td><td data-label="Visitante">Seattle Sounders</td><td data-label="1">1.54</td><td data-label="X">3.56</td><td data-label="2">4.51</td><td data-label="1X">1.11</td><td data-label="X2">2.05</td><td data-label="12">1.19</td></tr>
-    <tr><td data-label="Hora">21:00</td><td data-label="Liga">SPA1</td><td data-label="Local">Alaves</td><td data-label="Visitante">Osasuna</td><td data-label="1">3.10</td><td data-label="X">3.10</td><td data-label="2">2.40</td><td data-label="1X">1.52</td><td data-label="X2">1.33</td><td data-label="12">1.33</td></tr>
-    <tr><td data-label="Hora">21:00</td><td data-label="Liga">SPA1</td><td data-label="Local">Rayo Vallecano</td><td data-label="Visitante">Mallorca</td><td data-label="1">1.50</td><td data-label="X">4.25</td><td data-label="2">6.50</td><td data-label="1X">1.09</td><td data-label="X2">2.50</td><td data-label="12">1.20</td></tr>
-    <tr><td data-label="Hora">21:00</td><td data-label="Liga">SPA1</td><td data-label="Local">Getafe</td><td data-label="Visitante">Celta Vigo</td><td data-label="1">2.50</td><td data-label="X">3.40</td><td data-label="2">2.50</td><td data-label="1X">1.42</td><td data-label="X2">1.30</td><td data-label="12">1.27</td></tr>
-    <tr><td data-label="Hora">21:00</td><td data-label="Liga">USA1</td><td data-label="Local">Seattle Sounders</td><td data-label="Visitante">Dallas</td><td data-label="1">1.40</td><td data-label="X">4.50</td><td data-label="2">8.00</td><td data-label="1X">1.05</td><td data-label="X2">2.79</td><td data-label="12">1.17</td></tr>
-    <tr><td data-label="Hora">21:00</td><td data-label="Liga">ARG2</td><td data-label="Local">Atlanta</td><td data-label="Visitante">Gimnasia y Tiro Salta</td><td data-label="1">1.95</td><td data-label="X">3.00</td><td data-label="2">4.00</td><td data-label="1X">1.16</td><td data-label="X2">1.54</td><td data-label="12">1.29</td></tr>
-    <tr><td data-label="Hora">21:00</td><td data-label="Liga">CIL1</td><td data-label="Local">Everton Viña Del Mar</td><td data-label="Visitante">Cobresal</td><td data-label="1">2.00</td><td data-label="X">3.25</td><td data-label="2">3.40</td><td data-label="1X">1.22</td><td data-label="X2">1.63</td><td data-label="12">1.24</td></tr>
-    <tr><td data-label="Hora">22:30</td><td data-label="Liga">PER1</td><td data-label="Local">Atletico Grau</td><td data-label="Visitante">Binacional</td><td data-label="1">1.28</td><td data-label="X">4.50</td><td data-label="2">8.00</td><td data-label="1X">1.02</td><td data-label="X2">2.41</td><td data-label="12">1.13</td></tr>
-    <tr><td data-label="Hora">23:00</td><td data-label="Liga">BOL1</td><td data-label="Local">Univ De Vinto</td><td data-label="Visitante">Club Bolivar</td><td data-label="1">5.25</td><td data-label="X">4.00</td><td data-label="2">1.55</td><td data-label="1X">2.21</td><td data-label="X2">1.10</td><td data-label="12">1.18</td></tr>
-    <tr><td data-label="Hora">00:00</td><td data-label="Liga">PAR1</td><td data-label="Local">Club Libertad</td><td data-label="Visitante">General Caballero JL</td><td data-label="1">1.40</td><td data-label="X">4.00</td><td data-label="2">6.50</td><td data-label="1X">1.02</td><td data-label="X2">2.41</td><td data-label="12">1.13</td></tr>
-    <tr><td data-label="Hora">01:30</td><td data-label="Liga">CPLIB</td><td data-label="Local">Penarol</td><td data-label="Visitante">Velez Sarsfield</td><td data-label="1">2.05</td><td data-label="X">3.00</td><td data-label="2">3.60</td><td data-label="1X">1.20</td><td data-label="X2">1.61</td><td data-label="12">1.22</td></tr>
-    <tr><td data-label="Hora">01:30</td><td data-label="Liga">CPLIB</td><td data-label="Local">Olimpia Asuncion</td><td data-label="Visitante">San Antonio Bulo Bulo</td><td data-label="1">1.17</td><td data-label="X">7.00</td><td data-label="2">2.00</td><td data-label="1X">1.05</td><td data-label="X2">4.75</td><td data-label="12">1.05</td></tr>
-    <tr><td data-label="Hora">01:30</td><td data-label="Liga">CPSUDAM</td><td data-label="Local">Gremio</td><td data-label="Visitante">Sportivo Luqueno</td><td data-label="1">1.15</td><td data-label="X">6.50</td><td data-label="2">7.00</td><td data-label="1X">1.45</td><td data-label="X2">4.10</td><td data-label="12">1.06</td></tr>
-    <tr><td data-label="Hora">01:30</td><td data-label="Liga">CPSUDAM</td><td data-label="Local">Godoy Cruz</td><td data-label="Visitante">Atletico Grau</td><td data-label="1">1.30</td><td data-label="X">4.25</td><td data-label="2">6.00</td><td data-label="1X">1.90</td><td data-label="X2">3.30</td><td data-label="12">1.13</td></tr>
-    <tr><td data-label="Hora">01:30</td><td data-label="Liga">CPLIB</td><td data-label="Local">River Plate</td><td data-label="Visitante">Universitario</td><td data-label="1">1.30</td><td data-label="X">4.75</td><td data-label="2">9.00</td><td data-label="1X">1.08</td><td data-label="X2">3.01</td><td data-label="12">1.12</td></tr>
-    <tr><td data-label="Hora">01:30</td><td data-label="Liga">CPLIB</td><td data-label="Local">Estudiantes</td><td data-label="Visitante">Carabobo</td><td data-label="1">1.12</td><td data-label="X">8.00</td><td data-label="2">8.00</td><td data-label="1X">1.35</td><td data-label="X2">4.50</td><td data-label="12">1.04</td></tr>
-    <tr><td data-label="Hora">01:30</td><td data-label="Liga">CPSUDAM</td><td data-label="Local">America Cali</td><td data-label="Visitante">Racing Club</td><td data-label="1">1.24</td><td data-label="X">5.50</td><td data-label="2">1.00</td><td data-label="1X">1.67</td><td data-label="X2">3.70</td><td data-label="12">1.10</td></tr>
+    <!-- Ejemplo de partido con todos los mercados -->
+    <tr>
+      <td>16:00</td><td>URU2</td><td>Ca Artigas</td><td>Fenix Montevideo</td>
+      <td>2.85</td><td>2.85</td><td>2.09</td><td>1.47</td><td>1.25</td><td>1.25</td>
+      <td>2.47</td><td>1.52</td><td>1.52</td><td>2.47</td><td>1.25</td><td>3.60</td>
+      <td>1.95</td><td>1.70</td>
+    </tr>
+    <tr>
+      <td>16:45</td><td>ITA1</td><td>Atalanta</td><td>Parma</td>
+      <td>1.62</td><td>3.56</td><td>4.75</td><td>1.14</td><td>2.04</td><td>1.24</td>
+      <td>2.40</td><td>1.57</td><td>1.52</td><td>2.40</td><td>1.24</td><td>3.75</td>
+      <td>1.95</td><td>1.72</td>
+    </tr>
+    <tr>
+      <td>16:45</td><td>ITA1</td><td>Lazio</td><td>Lecce</td>
+      <td>1.50</td><td>3.33</td><td>6.65</td><td>1.07</td><td>2.23</td><td>1.26</td>
+      <td>2.50</td><td>1.45</td><td>1.52</td><td>2.40</td><td>1.22</td><td>3.60</td>
+      <td>2.00</td><td>1.70</td>
+    </tr>
+    <tr>
+      <td>16:45</td><td>ITA1</td><td>Torino</td><td>Roma</td>
+      <td>5.46</td><td>3.80</td><td>1.50</td><td>2.19</td><td>1.11</td><td>1.21</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>16:45</td><td>ITA1</td><td>Udinese</td><td>Fiorentina</td>
+      <td>3.56</td><td>3.42</td><td>1.85</td><td>1.71</td><td>1.24</td><td>1.26</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>17:00</td><td>USA1</td><td>New York City</td><td>Chicago Fire</td>
+      <td>1.90</td><td>3.56</td><td>3.09</td><td>1.28</td><td>1.71</td><td>1.22</td>
+      <td>2.50</td><td>1.45</td><td>1.52</td><td>2.40</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>17:15</td><td>CIL2</td><td>Union San Felipe</td><td>Universidad De Concepcion</td>
+      <td>2.33</td><td>2.85</td><td>2.66</td><td>1.33</td><td>1.42</td><td>1.28</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>17:15</td><td>ISL1</td><td>FH Hafnarfjordur</td><td>Breidablik</td>
+      <td>3.09</td><td>3.56</td><td>1.81</td><td>1.71</td><td>1.24</td><td>1.18</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>18:30</td><td>ECU1</td><td>Tecnico Universitario</td><td>Delfin SC</td>
+      <td>1.50</td><td>3.23</td><td>5.00</td><td>1.06</td><td>2.02</td><td>1.19</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>19:00</td><td>COL1</td><td>America Cali</td><td>Independiente Medellin</td>
+      <td>2.19</td><td>2.47</td><td>3.42</td><td>1.20</td><td>1.48</td><td>1.38</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>19:00</td><td>COL1</td><td>Bucaramanga</td><td>Pasto</td>
+      <td>2.09</td><td>2.85</td><td>3.09</td><td>1.25</td><td>1.53</td><td>1.29</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>19:00</td><td>COL1</td><td>Alianza Fc Valledupar</td><td>Santa Fe</td>
+      <td>2.14</td><td>2.76</td><td>3.09</td><td>1.25</td><td>1.50</td><td>1.31</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>19:00</td><td>COL1</td><td>Once Caldas</td><td>Deportivo Cali</td>
+      <td>1.57</td><td>3.23</td><td>5.00</td><td>1.09</td><td>2.02</td><td>1.23</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>20:00</td><td>MONDCL</td><td>Palmeiras</td><td>Porto</td>
+      <td>2.57</td><td>3.09</td><td>2.38</td><td>1.45</td><td>1.39</td><td>1.28</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>00:00</td><td>MONDCL</td><td>Botafogo</td><td>Seattle Sounders</td>
+      <td>1.54</td><td>3.56</td><td>4.51</td><td>1.11</td><td>2.05</td><td>1.19</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>21:00</td><td>SPA1</td><td>Alaves</td><td>Osasuna</td>
+      <td>3.10</td><td>3.10</td><td>2.40</td><td>1.52</td><td>1.33</td><td>1.33</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>21:00</td><td>SPA1</td><td>Rayo Vallecano</td><td>Mallorca</td>
+      <td>1.50</td><td>4.25</td><td>6.50</td><td>1.09</td><td>2.50</td><td>1.20</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>21:00</td><td>SPA1</td><td>Getafe</td><td>Celta Vigo</td>
+      <td>2.50</td><td>3.40</td><td>2.50</td><td>1.42</td><td>1.30</td><td>1.27</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>21:00</td><td>USA1</td><td>Seattle Sounders</td><td>Dallas</td>
+      <td>1.40</td><td>4.50</td><td>8.00</td><td>1.05</td><td>2.79</td><td>1.17</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>21:00</td><td>ARG2</td><td>Atlanta</td><td>Gimnasia y Tiro Salta</td>
+      <td>1.95</td><td>3.00</td><td>4.00</td><td>1.16</td><td>1.54</td><td>1.29</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>21:00</td><td>CIL1</td><td>Everton Viña Del Mar</td><td>Cobresal</td>
+      <td>2.00</td><td>3.25</td><td>3.40</td><td>1.22</td><td>1.63</td><td>1.24</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>22:30</td><td>PER1</td><td>Atletico Grau</td><td>Binacional</td>
+      <td>1.28</td><td>4.50</td><td>8.00</td><td>1.02</td><td>2.41</td><td>1.13</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>23:00</td><td>BOL1</td><td>Univ De Vinto</td><td>Club Bolivar</td>
+      <td>5.25</td><td>4.00</td><td>1.55</td><td>2.21</td><td>1.10</td><td>1.18</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>00:00</td><td>PAR1</td><td>Club Libertad</td><td>General Caballero JL</td>
+      <td>1.40</td><td>4.00</td><td>6.50</td><td>1.02</td><td>2.41</td><td>1.13</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>01:30</td><td>CPLIB</td><td>Penarol</td><td>Velez Sarsfield</td>
+      <td>2.05</td><td>3.00</td><td>3.60</td><td>1.20</td><td>1.61</td><td>1.22</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>01:30</td><td>CPLIB</td><td>Olimpia Asuncion</td><td>San Antonio Bulo Bulo</td>
+      <td>1.17</td><td>7.00</td><td>2.00</td><td>1.05</td><td>4.75</td><td>1.05</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>01:30</td><td>CPSUDAM</td><td>Gremio</td><td>Sportivo Luqueno</td>
+      <td>1.15</td><td>6.50</td><td>7.00</td><td>1.45</td><td>4.10</td><td>1.06</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>01:30</td><td>CPSUDAM</td><td>Godoy Cruz</td><td>Atletico Grau</td>
+      <td>1.30</td><td>4.25</td><td>6.00</td><td>1.90</td><td>3.30</td><td>1.13</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>01:30</td><td>CPLIB</td><td>River Plate</td><td>Universitario</td>
+      <td>1.30</td><td>4.75</td><td>9.00</td><td>1.08</td><td>3.01</td><td>1.12</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>01:30</td><td>CPLIB</td><td>Estudiantes</td><td>Carabobo</td>
+      <td>1.12</td><td>8.00</td><td>8.00</td><td>1.35</td><td>4.50</td><td>1.04</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
+    <tr>
+      <td>01:30</td><td>CPSUDAM</td><td>America Cali</td><td>Racing Club</td>
+      <td>1.24</td><td>5.50</td><td>1.00</td><td>1.67</td><td>3.70</td><td>1.10</td>
+      <td>2.60</td><td>1.42</td><td>1.57</td><td>2.30</td><td>1.20</td><td>4.00</td>
+      <td>1.90</td><td>1.80</td>
+    </tr>
   </tbody>
 </table>
 
@@ -167,8 +316,8 @@
 <!-- Contenedor del Reglamento -->
 <div id="reglamento" class="reglamento-content">
   <h3>Reglamento de Apuestas</h3>
-  <p>Todas las cuotas están calculadas con un 5% de reducción respecto a Sisal.</p>
-  <p>Ejemplo interactivo:
+  <p>Las cuotas están calculadas con un 5% de reducción respecto a Sisal.</p>
+  <p>Ejemplo interactivo: 
     <input type="number" placeholder="Monto" onchange="calcularGanancia()">
     → Ganancia: <span id="ganancia"></span>
   </p>
@@ -182,9 +331,10 @@
 
   function calcularGanancia() {
     const monto = parseFloat(event.target.value);
-    const cuotaEjemplo = 2.10; // Ejemplo fijo
     if (!isNaN(monto)) {
-      document.getElementById("ganancia").innerText = `$${(monto * cuotaEjemplo).toFixed(2)} (incluye tu ganancia)`;
+      const cuotaEjemplo = 2.10; // Cuota promedio
+      const ganancia = (monto * cuotaEjemplo).toFixed(2);
+      document.getElementById("ganancia").innerText = `$${ganancia} (incluye tu ganancia)`;
     } else {
       document.getElementById("ganancia").innerText = "";
     }
