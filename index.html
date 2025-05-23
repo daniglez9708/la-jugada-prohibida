@@ -2,47 +2,168 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Jugada Prohibida</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body { font-family: Arial; max-width: 800px; margin: 0 auto; padding: 20px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
-        th { background-color: #2c3e50; color: white; }
-        tr:nth-child(even) { background-color: #f2f2f2; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+        h1 {
+            color: #ff5722;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #1e1e1e;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white !important;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 100;
+        }
+        .whatsapp-float:hover {
+            background: #128C7E;
+        }
+        @media (max-width: 768px) {
+            table {
+                font-size: 12px;
+            }
+            th, td {
+                padding: 5px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Partidos y cuotas del día</h1>
-    <table id="tabla-partidos">
-        <thead>
-            <tr>
-                <th>Local</th>
-                <th>Visitante</th>
-                <th>Cuota Local</th>
-                <th>Cuota Empate</th>
-                <th>Cuota Visitante</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <div class="container">
+        <h1>La Jugada Prohibida</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Hora</th>
+                    <th>Liga</th>
+                    <th>Local</th>
+                    <th>Visitante</th>
+                    <th>1</th>
+                    <th>X</th>
+                    <th>2</th>
+                    <th>1X</th>
+                    <th>X2</th>
+                    <th>12</th>
+                    <th>U1.5</th>
+                    <th>O1.5</th>
+                    <th>U2.5</th>
+                    <th>O2.5</th>
+                    <th>U3.5</th>
+                    <th>O3.5</th>
+                    <th>G</th>
+                    <th>NG</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Partidos actualizados con horario Cuba (GMT-5) -->
+                <tr>
+                    <td>14:45</td>
+                    <td>ITA1</td>
+                    <td>Milan</td>
+                    <td>Monza</td>
+                    <td>1.15</td>
+                    <td>6.65</td>
+                    <td>10.45</td>
+                    <td>1.04</td>
+                    <td>3.94</td>
+                    <td>1.09</td>
+                    <td>1.06</td>
+                    <td>3.20</td>
+                    <td>1.33</td>
+                    <td>1.90</td>
+                    <td>1.75</td>
+                    <td>1.65</td>
+                    <td>2.10</td>
+                    <td>1.42</td>
+                </tr>
+                <tr>
+                    <td>15:00</td>
+                    <td>SPA1</td>
+                    <td>Alavés</td>
+                    <td>Osasuna</td>
+                    <td>2.94</td>
+                    <td>2.94</td>
+                    <td>2.23</td>
+                    <td>1.47</td>
+                    <td>3.42</td>
+                    <td>4.37</td>
+                    <td>1.44</td>
+                    <td>1.24</td>
+                    <td>1.24</td>
+                    <td>2.47</td>
+                    <td>1.35</td>
+                    <td>1.49</td>
+                    <td>2.13</td>
+                    <td>1.22</td>
+                </tr>
+                <tr>
+                    <td>15:00</td>
+                    <td>SPA1</td>
+                    <td>Rayo Vallecano</td>
+                    <td>Maiorca</td>
+                    <td>1.44</td>
+                    <td>3.56</td>
+                    <td>6.17</td>
+                    <td>1.17</td>
+                    <td>5.03</td>
+                    <td>2.32</td>
+                    <td>1.01</td>
+                    <td>2.20</td>
+                    <td>1.15</td>
+                    <td>1.63</td>
+                    <td>1.18</td>
+                    <td>3.32</td>
+                    <td>1.99</td>
+                    <td>1.12</td>
+                </tr>
+                <!-- Más partidos... (seguir con el mismo formato) -->
+            </tbody>
+        </table>
+    </div>
 
-    <script>
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                const tbody = document.querySelector('#tabla-partidos tbody');
-                data.partidos.forEach(partido => {
-                    tbody.innerHTML += `
-                        <tr>
-                            <td>${partido.local}</td>
-                            <td>${partido.visitante}</td>
-                            <td>${partido.cuota_local}</td>
-                            <td>${partido.cuota_empate}</td>
-                            <td>${partido.cuota_visitante}</td>
-                        </tr>
-                    `;
-                });
-            });
-    </script>
+    <!-- Botón WhatsApp -->
+    <a href="https://wa.me/52919081" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i> ¡Apuesta!
+    </a>
 </body>
 </html>
