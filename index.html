@@ -1,319 +1,996 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>La Jugada Prohibida - 24 Mayo 2025</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      background-color: #121212;
-      color: white;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    h1 {
-      text-align: center;
-      padding: 20px;
-      background: linear-gradient(90deg, #FFA500, #00FF00, #00FFFF);
-      color: black;
-      margin: 0;
-      font-weight: bold;
-    }
-    .aviso-hora {
-      background-color: #1f1f1f;
-      color: orange;
-      padding: 10px;
-      text-align: center;
-      font-weight: bold;
-    }
-    table {
-      width: max-content;
-      border-collapse: collapse;
-      margin-top: 20px;
-      color: white;
-      overflow-x: auto;
-      display: block;
-      white-space: nowrap;
-    }
-    th, td {
-      min-width: 100px;
-      padding: 10px;
-      text-align: center;
-      border-bottom: 1px solid #333;
-    }
-    th {
-      background-color: #1f1f1f;
-    }
-    .floating-buttons {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 1000;
-    }
-    .whatsapp-btn, .rule-btn {
-      background-color: orange;
-      color: black;
-      padding: 10px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      text-align: center;
-    }
-    .reglamento-content {
-      background: #1e1e1e;
-      padding: 20px;
-      margin: 20px;
-      border-radius: 8px;
-      max-width: 600px;
-      display: none;
-    }
-    @media (max-width: 600px) {
-      table {
-        font-size: 14px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Jugada Prohibida - Apuestas Deportivas</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b00;
+            --secondary-color: #00d4aa;
+            --accent-color: #ffd700;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --border-color: #333;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --gradient-main: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --gradient-card: linear-gradient(135deg, rgba(255, 107, 0, 0.1), rgba(0, 212, 170, 0.1));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Header moderno */
+        .header {
+            background: var(--gradient-main);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        /* Botones mejorados */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }        .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(0, 212, 170, 0.2);
+            color: var(--secondary-color);
+            border: 2px solid rgba(0, 212, 170, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 170, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 170, 0.2);
+        }
+
+        .btn-cart {
+            background: var(--accent-color);
+            color: #000;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .btn-cart:hover {
+            background: #ffed4e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--danger-color);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 2px solid white;
+        }
+
+        /* Container principal */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Zona de información del evento */
+        .event-info-section {
+            background: var(--card-bg);
+            margin: 2rem auto;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-info-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-main);
+        }
+
+        .event-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .event-title h2 {
+            font-size: 2.5rem;
+            background: var(--gradient-main);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-title p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .event-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--gradient-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 107, 0, 0.2);
+        }
+
+        .stat-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .stat-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .stat-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Filtros y búsqueda */
+        .filters-section {
+            background: var(--card-bg);
+            margin: 2rem auto;
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .filters-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filters-header h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-group label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }        .filter-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Estilos específicos para select y sus opciones */
+        select.filter-input {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.7rem center;
+            background-size: 1rem;
+            padding-right: 2.5rem;
+        }
+
+        select.filter-input option {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            padding: 0.5rem;
+            border: none;
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-filter {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-filter:hover {
+            background: #e55a00;
+            transform: translateY(-2px);
+        }
+
+        .btn-clear {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-clear:hover {
+            background: var(--border-color);
+            color: var(--text-primary);
+        }        /* Tabla moderna */
+        .matches-summary {
+            background: var(--card-bg);
+            margin: 2rem auto;
+            border-radius: 15px;
+            padding: 1.5rem 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .summary-header h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .summary-count {
+            background: var(--gradient-main);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .matches-by-league {
+            margin: 2rem auto;
+        }
+
+        .league-section {
+            background: var(--card-bg);
+            margin: 2rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .league-section.hidden {
+            display: none;
+        }
+
+        .league-header {
+            background: var(--gradient-main);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .league-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .league-title {
+            color: white;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .league-icon {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+        }
+
+        .league-count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            z-index: 1;
+            position: relative;
+        }
+
+        .matches-section {
+            background: var(--card-bg);
+            margin: 2rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+        }
+
+        .matches-header {
+            background: var(--gradient-main);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .matches-header h2 {
+            color: white;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .matches-count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            max-height: 70vh;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+        }
+
+        th {
+            background: rgba(255, 107, 0, 0.15);
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        tr:hover {
+            background: rgba(255, 107, 0, 0.08);
+        }
+
+        .match-info {
+            text-align: left !important;
+            min-width: 220px;
+            max-width: 280px;
+        }
+
+        .match-teams {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+
+        .match-league {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .match-time {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }        /* Cuotas mejoradas */
+        .odds-cell {
+            background: rgba(255, 255, 255, 0.03);
+            min-width: 80px;
+            font-weight: 600;
+            color: var(--accent-color);
+            font-size: 1rem;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .odds-cell:hover {
+            background: rgba(255, 215, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .bet-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .bet-value {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        /* Botones de apuesta */
+        .bet-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-bet {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .btn-bet:hover {
+            background: #00b89a;
+            transform: scale(1.05);
+        }
+
+        /* Admin buttons */
+        .admin-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .btn-admin {
+            background: var(--warning-color);
+            color: #000;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-admin:hover {
+            background: #e0a800;
+            transform: scale(1.05);
+        }
+
+        .btn-delete {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #c82333;
+        }
+
+        /* Modal moderno */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            color: var(--text-secondary);
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: var(--danger-color);
+        }
+
+        .modal h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .modal-form input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .modal-form input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .event-title h2 {
+                font-size: 2rem;
+            }
+
+            .event-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .table-wrapper {
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 0.8rem 0.4rem;
+            }
+
+            .match-info {
+                min-width: 180px;
+            }
+        }
+
+        /* Loading animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Status indicators */
+        .status-indicator {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-live {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .status-upcoming {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .status-finished {
+            background: var(--text-secondary);
+            color: white;
+        }
+    </style>
 </head>
 <body>
-<h1>⚽ La Jugada Prohibida - 24 de Mayo 2025</h1>
-<div class="aviso-hora">⏰ Horas en horario de Cuba (-04:00 UTC)</div>
-<!-- Tabla de Partidos -->
-<table id="tabla-partidos">
-  <thead>
-    <tr>
-      <th>Hora</th>
-      <th>Liga</th>
-      <th>Local</th>
-      <th>Visitante</th>
-      <th>1</th>
-      <th>X</th>
-      <th>2</th>
-      <th>1X</th>
-      <th>X2</th>
-      <th>12</th>
-      <th>U1.5</th>
-      <th>O1.5</th>
-      <th>U2.5</th>
-      <th>O2.5</th>
-      <th>U3.5</th>
-      <th>O3.5</th>
-      <th>G</th>
-      <th>NG</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Ejemplo de partido con todos los mercados -->
-    <tr>
-      <td>17:30</td><td>AZE1</td><td>Sabayil</td><td>Sumgayit</td>
-      <td>3.75</td><td>3.40</td><td>1.95</td><td>1.22</td><td>1.26</td><td>3.00</td>
-      <td>1.33</td><td>1.62</td><td>2.10</td><td>1.85</td><td>1.80</td><td>1.18</td>
-      <td>4.00</td><td>3.75</td>
-    </tr>
-    <tr>
-      <td>17:30</td><td>FIN3</td><td>Tpv Tampere</td><td>Nurmijarven Jalkapalloseu</td>
-      <td>1.20</td><td>6.00</td><td>8.50</td><td>1.04</td><td>11.00</td><td>1.03</td>
-      <td>4.00</td><td>1.18</td><td>1.38</td><td>2.70</td><td>2.40</td><td>1.48</td>
-      <td>2.15</td><td>2.00</td>
-    </tr>
-    <tr>
-      <td>17:30</td><td>FIN3</td><td>Fc Jazz Tampere United</td><td>-</td>
-      <td>2.35</td><td>3.60</td><td>2.70</td><td>1.51</td><td>1.24</td><td>4.75</td>
-      <td>1.14</td><td>2.20</td><td>1.57</td><td>1.45</td><td>2.50</td><td>1.50</td>
-      <td>2.35</td><td>1.52</td>
-    </tr>
-    <tr>
-      <td>17:30</td><td>SLVN1</td><td>Nk Radomlje U19</td><td>Nd Primorje</td>
-      <td>2.00</td><td>3.60</td><td>3.25</td><td>1.67</td><td>1.22</td><td>4.25</td>
-      <td>1.16</td><td>2.10</td><td>1.62</td><td>1.52</td><td>2.30</td><td>1.42</td>
-      <td>2.60</td><td>1.67</td>
-    </tr>
-    <tr>
-      <td>17:30</td><td>POL3</td><td>Oks Swit Skolwin Szczecin Cwks Resovia</td><td>-</td>
-      <td>2.60</td><td>3.10</td><td>2.40</td><td>1.33</td><td>1.23</td><td>3.50</td>
-      <td>1.24</td><td>1.80</td><td>1.85</td><td>1.67</td><td>2.00</td><td>1.28</td>
-      <td>3.25</td><td>5.25</td>
-    </tr>
-    <tr>
-      <td>17:30</td><td>FIN4</td><td>Tove Salpa 2</td><td>-</td>
-      <td>3.40</td><td>4.25</td><td>1.70</td><td>1.19</td><td>1.12</td><td>9.00</td>
-      <td>1.04</td><td>3.75</td><td>1.20</td><td>1.20</td><td>3.75</td><td>2.30</td>
-      <td>1.50</td><td>2.80</td>
-    </tr>
-    <tr>
-      <td>17:45</td><td>EAU1</td><td>Al Nasr</td><td>Al Ain</td>
-      <td>3.40</td><td>4.00</td><td>1.80</td><td>1.22</td><td>1.16</td><td>7.00</td>
-      <td>1.07</td><td>3.00</td><td>1.33</td><td>1.33</td><td>3.00</td><td>1.90</td>
-      <td>1.80</td><td>2.85</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>AUT3</td><td>Donaufeld Wiener Sk</td><td>-</td>
-      <td>1.75</td><td>4.00</td><td>3.75</td><td>1.89</td><td>1.17</td><td>5.75</td>
-      <td>1.10</td><td>2.60</td><td>1.42</td><td>1.42</td><td>2.60</td><td>1.67</td>
-      <td>2.05</td><td>1.95</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>AUT3</td><td>Neusiedl Sv Gloggnitz</td><td>-</td>
-      <td>1.60</td><td>4.50</td><td>4.50</td><td>2.20</td><td>1.16</td><td>6.50</td>
-      <td>1.07</td><td>2.90</td><td>1.36</td><td>1.38</td><td>2.75</td><td>1.85</td>
-      <td>1.85</td><td>2.25</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>RCEC3</td><td>Pribram Loko Vltavin</td><td>-</td>
-      <td>1.80</td><td>3.60</td><td>3.50</td><td>1.74</td><td>1.17</td><td>5.00</td>
-      <td>1.13</td><td>2.30</td><td>1.52</td><td>1.47</td><td>2.45</td><td>1.55</td>
-      <td>2.25</td><td>1.85</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>GHA1</td><td>Hearts Of Oak</td><td>Accra Lions</td>
-      <td>3.25</td><td>3.25</td><td>1.90</td><td>1.18</td><td>1.18</td><td>2.15</td>
-      <td>1.60</td><td>1.36</td><td>2.90</td><td>2.30</td><td>1.52</td><td>1.08</td>
-      <td>6.00</td><td>5.25</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>FIN3</td><td>Kuopion Elo Gbk Kokkola</td><td>-</td>
-      <td>5.50</td><td>5.25</td><td>1.36</td><td>1.06</td><td>1.07</td><td>11.00</td>
-      <td>1.04</td><td>4.00</td><td>1.18</td><td>1.27</td><td>3.25</td><td>2.50</td>
-      <td>1.47</td><td>1.95</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>FIN3</td><td>Atlantis Fc Mikkelin Palloilijat</td><td>-</td>
-      <td>1.90</td><td>4.00</td><td>3.25</td><td>1.76</td><td>1.18</td><td>6.00</td>
-      <td>1.10</td><td>2.60</td><td>1.42</td><td>1.36</td><td>2.90</td><td>1.75</td>
-      <td>1.95</td><td>1.80</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>FIN3</td><td>Vjs Mypa Myllykoski</td><td>-</td>
-      <td>1.09</td><td>7.50</td><td>16.00</td><td>1.03</td><td>4.00</td><td>1.18</td>
-      <td>2.45</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
-      <td>-</td><td>-</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>POL3</td><td>Gks Jastrzebie Zdroj Zaglebie Lubin U19</td><td>-</td>
-      <td>2.40</td><td>3.25</td><td>2.50</td><td>1.39</td><td>1.20</td><td>4.00</td>
-      <td>1.19</td><td>1.95</td><td>1.72</td><td>1.55</td><td>2.20</td><td>1.36</td>
-      <td>2.80</td><td>1.48</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>SAU2</td><td>Al Adalh Al Bukayriyah Fc</td><td>-</td>
-      <td>2.60</td><td>3.10</td><td>2.75</td><td>1.43</td><td>1.31</td><td>2.90</td>
-      <td>1.36</td><td>1.65</td><td>2.10</td><td>1.80</td><td>1.90</td><td>1.22</td>
-      <td>3.60</td><td>1.44</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>ITAPR</td><td>Acf Fiorentina U20 Juventus Turin U20</td><td>-</td>
-      <td>1.90</td><td>3.75</td><td>3.40</td><td>1.75</td><td>1.20</td><td>4.50</td>
-      <td>1.14</td><td>2.25</td><td>1.52</td><td>1.47</td><td>2.45</td><td>1.48</td>
-      <td>2.30</td><td>1.75</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>SLVK1</td><td>Dunajska Streda Fk Zeleziarne Podbrezova</td><td>-</td>
-      <td>1.38</td><td>4.75</td><td>7.00</td><td>2.75</td><td>1.13</td><td>4.00</td>
-      <td>1.16</td><td>2.10</td><td>1.62</td><td>1.80</td><td>1.80</td><td>1.40</td>
-      <td>2.50</td><td>2.75</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>FIN3</td><td>Ppj Tampereen Ilves 2</td><td>-</td>
-      <td>3.25</td><td>4.25</td><td>1.72</td><td>1.20</td><td>1.11</td><td>10.00</td>
-      <td>1.04</td><td>3.75</td><td>1.20</td><td>1.20</td><td>3.75</td><td>2.25</td>
-      <td>1.52</td><td>2.90</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>FIN3</td><td>Kiffen Hps</td><td>-</td>
-      <td>1.36</td><td>5.00</td><td>5.50</td><td>2.55</td><td>1.07</td><td>5.75</td>
-      <td>1.10</td><td>2.60</td><td>1.42</td><td>1.52</td><td>2.25</td><td>1.70</td>
-      <td>2.00</td><td>2.90</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>LIT2</td><td>Fc Neptunas Klaipeda Fk Atmosphere</td><td>-</td>
-      <td>1.27</td><td>5.50</td><td>10.00</td><td>3.42</td><td>1.11</td><td>4.50</td>
-      <td>1.15</td><td>2.20</td><td>1.57</td><td>1.95</td><td>1.72</td><td>1.44</td>
-      <td>2.50</td><td>1.85</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>LIT2</td><td>Fk Babrungas Plunge Fk Ekranas</td><td>-</td>
-      <td>1.38</td><td>4.75</td><td>6.50</td><td>2.67</td><td>1.12</td><td>4.75</td>
-      <td>1.14</td><td>2.20</td><td>1.57</td><td>1.72</td><td>1.95</td><td>1.47</td>
-      <td>2.45</td><td>2.90</td>
-    </tr>
-    <tr>
-      <td>18:00</td><td>FIN4</td><td>Tervakosken Pato Tampere United 2</td><td>-</td>
-      <td>18.00</td><td>10.00</td><td>1.05</td><td>5.25</td><td>1.11</td><td>1.57</td>
-      <td>2.15</td><td>2.90</td><td>1.33</td><td>-</td><td>-</td><td>-</td>
-      <td>-</td><td>2.45</td>
-    </tr>
-  </tbody>
-</table>
-<!-- Botones Flotantes -->
-<div class="floating-buttons">
-  <a href="https://wa.me/52919081  " target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
-  <a href="#reglamento" onclick="toggleReglamento()" class="rule-btn">📄 Reglamento</a>
-</div>
-<!-- Contenedor del Reglamento -->
-<div id="reglamento" class="reglamento-content">
-  <h3>Reglamento General de la Casa de Apuestas</h3>
-  <h4>1. RESULTADO FINAL (1, X, 2)</h4>
-  <p>Se apuesta al resultado final del partido:</p>
-  <ul>
-    <li><strong>1</strong> → Victoria del equipo local</li>
-    <li><strong>X</strong> → Empate</li>
-    <li><strong>2</strong> → Victoria del equipo visitante</li>
-  </ul>
-  <p>Ejemplo: Si apuestas al “1” en un Barcelona vs Real Madrid y el partido termina 2-1, ganas la apuesta.</p>
-  <h4>2. DOBLE OPORTUNIDAD (1X, X2, 12)</h4>
-  <p>Permite cubrir dos de los tres posibles resultados:</p>
-  <ul>
-    <li><strong>1X</strong> → Ganas si gana el local o empatan</li>
-    <li><strong>X2</strong> → Ganas si empatan o gana el visitante</li>
-    <li><strong>12</strong> → Ganas si gana cualquiera de los dos (no sirve el empate)</li>
-  </ul>
-  <p>Ejemplo: Si apuestas a "1X" y el partido termina 2-2, ganas. Si termina 1-0 también ganas. Si gana el visitante, pierdes.</p>
-  <h4>3. GOLES: UNDER/OVER (1.5, 2.5, 3.5)</h4>
-  <p>Se apuesta al total de goles en el partido, sin importar quién los anote:</p>
-  <ul>
-    <li><strong>U 1.5</strong> → Menos de 2 goles</li>
-    <li><strong>O 1.5</strong> → 2 o más goles</li>
-    <li><strong>U 2.5</strong> → Menos de 3 goles</li>
-    <li><strong>O 2.5</strong> → 3 o más goles</li>
-    <li><strong>U 3.5</strong> → Menos de 4 goles</li>
-    <td>O 3.5</td> → 4 o más goles
-  </ul>
-  <p>Ejemplo: Si apuestas a "O 2.5" en Barcelona vs Real Madrid y el partido termina 2-2, ganas (4 goles).</p>
-  <h4>4. ¿AMBOS EQUIPOS MARCAN? (G / NG)</h4>
-  <p>Se apuesta a si ambos equipos anotarán al menos un gol:</p>
-  <ul>
-    <li><strong>G</strong> → Sí (Gol de ambos equipos)</li>
-    <li><strong>NG</strong> → No (Uno o ninguno marca)</li>
-  </ul>
-  <p>Ejemplo: Si el partido queda 2-1, ganas (marcaron los dos). Si termina 3-0 o 0-0, ganas (uno o ninguno marcó).</p>
-</div>
-<script>
-  function toggleReglamento() {
-    const reglamento = document.getElementById("reglamento");
-    reglamento.style.display = reglamento.style.display === "block" ? "none" : "block";
-  }
-  window.onload = function () {
-    const rows = document.querySelectorAll("#tabla-partidos tbody tr");
-    let errorCount = 0;
-    rows.forEach(row => {
-      const cols = row.querySelectorAll("td");
-      const _1X = parseFloat(cols[7].innerText);
-      const _X2 = parseFloat(cols[8].innerText);
-      const _12 = parseFloat(cols[9].innerText);
-      if (_12 >= _1X || _12 >= _X2) {
-        console.warn(`⚠️ Error detectado en partido: ${cols[2].innerText} vs ${cols[3].innerText}`);
-        errorCount++;
-      }
-    });
-    if (errorCount === 0) {
-      console.log("✅ Todas las cuotas cumplen con las condiciones.");
-    } else {
-      console.error(`❌ Se encontraron ${errorCount} errores en cuotas.`);
-    }
-  };
-</script>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-futbol"></i>
+                <h1>La Jugada Prohibida</h1>
+            </div>            <div class="header-actions">
+                <button class="btn btn-primary" onclick="openReglamento()">
+                    <i class="fas fa-book"></i>
+                    Reglamento
+                </button>
+                <button class="btn btn-primary" onclick="adminPanel.showLoginModal()">
+                    <i class="fas fa-user-shield"></i>
+                    Admin
+                </button>
+                <button class="btn btn-cart" onclick="cartManager.showCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    Carrito
+                    <span class="cart-badge" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container principal -->
+    <div class="main-container">
+        <!-- Información del evento -->
+        <section class="event-info-section">
+            <div class="event-title">
+                <h2>Evento Principal - Mayo 2025</h2>
+                <p>Las mejores cuotas para los partidos más emocionantes</p>
+            </div>
+            
+            <div class="event-stats">
+                <div class="stat-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Fecha del Evento</h3>
+                    <p>24 de Mayo de 2025<br>Todos los horarios</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Partidos Disponibles</h3>
+                    <p><span id="totalMatches">0</span> encuentros<br>Múltiples ligas</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-coins"></i>
+                    <h3>Mejores Cuotas</h3>
+                    <p>Actualización en tiempo real<br>Máxima rentabilidad</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Apuestas Seguras</h3>
+                    <p>Plataforma confiable<br>Pagos garantizados</p>
+                </div>
+            </div>
+        </section>        Filtros y búsqueda
+        <section class="filters-section">
+            <div class="filters-header">
+                <i class="fas fa-filter"></i>
+                <h3>Filtrar Partidos</h3>
+            </div>
+            
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label for="leagueFilter">🏆 Liga</label>
+                    <select id="leagueFilter" class="filter-input">
+                        <option value="">Todas las ligas</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="timeFilter">⏰ Hora</label>
+                    <select id="timeFilter" class="filter-input">
+                        <option value="">Todos los horarios</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="teamSearch">🔍 Buscar Equipo</label>
+                    <input type="text" id="teamSearch" class="filter-input" placeholder="Nombre del equipo...">
+                </div>
+                <div class="filter-group">
+                    <label for="minOdds">💰 Cuota Mínima</label>
+                    <input type="number" id="minOdds" class="filter-input" placeholder="1.0" step="0.1" min="1">
+                </div>
+            </div>
+            
+            <div class="filter-actions">
+                <button class="btn-filter" onclick="applyFilters()">
+                    <i class="fas fa-search"></i>
+                    Aplicar Filtros
+                </button>
+                <button class="btn-filter btn-clear" onclick="clearFilters()">
+                    <i class="fas fa-times"></i>
+                    Limpiar
+                </button>            </div>
+        </section>
+
+        <!-- Resumen de partidos -->
+        <section class="matches-summary">
+            <div class="summary-header">
+                <h2>
+                    <i class="fas fa-list"></i>
+                    Partidos Disponibles
+                </h2>
+                <div class="summary-count">
+                    <span id="visibleMatches">0</span> partidos mostrados
+                </div>
+            </div>
+        </section>
+
+        <!-- Tablas de partidos por liga -->
+        <div id="matchesByLeague" class="matches-by-league">
+            <!-- Las tablas se generarán dinámicamente aquí -->
+        </div>
+    </div>    <!-- Scripts -->
+    <!-- Load Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Load our scripts in order -->
+    <script src="js/supabaseDataManager.js"></script>
+    <script>
+        // Create and initialize dataManager instance
+        window.dataManager = new SupabaseDataManager();
+    </script>
+    <script src="js/cartManager.js"></script>
+    <script src="js/adminPanel.js"></script>
+    <script src="js/main.js"></script>    <script>
+        // Esperar a que todos los scripts estén cargados
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Verificar que dataManager exista y esté inicializado
+            if (typeof dataManager === 'undefined') {
+                console.error('❌ dataManager no está disponible');
+                return;
+            }
+            
+            // Iniciar la aplicación
+            if (typeof initializeApp === 'function') {
+                initializeApp().catch(error => console.error('Error iniciando aplicación:', error));
+            } else {
+                console.error('❌ initializeApp no está disponible');
+            }
+        });
+        
+        // Funciones auxiliares para filtros
+        function applyFilters() {
+            const leagueFilter = document.getElementById('leagueFilter').value;
+            const timeFilter = document.getElementById('timeFilter').value;
+            const teamSearch = document.getElementById('teamSearch').value.toLowerCase();
+            const minOdds = parseFloat(document.getElementById('minOdds').value) || 0;
+
+            window.currentFilters = {
+                league: leagueFilter,
+                time: timeFilter,
+                team: teamSearch,
+                minOdds: minOdds
+            };
+            
+            
+            // Llamar a la función de main.js
+            if (typeof loadDataToTable === 'function') {
+                loadDataToTable().catch(error => console.error('Error al aplicar filtros:', error));
+            }
+        }
+        
+        function clearFilters() {
+            document.getElementById('leagueFilter').value = '';
+            document.getElementById('timeFilter').value = '';
+            document.getElementById('teamSearch').value = '';
+            document.getElementById('minOdds').value = '';
+            
+            window.currentFilters = {};
+              // Llamar a la función de main.js
+            if (typeof loadDataToTable === 'function') {
+                loadDataToTable().catch(error => console.error('Error al limpiar filtros:', error));
+            }
+        }
+
+        // Event listeners para filtros en tiempo real
+        document.addEventListener('DOMContentLoaded', function() {
+            const teamSearch = document.getElementById('teamSearch');
+            teamSearch.addEventListener('input', function() {
+                clearTimeout(this.searchTimeout);
+                this.searchTimeout = setTimeout(applyFilters, 300);
+            });
+
+            const minOdds = document.getElementById('minOdds');            minOdds.addEventListener('input', function() {
+                clearTimeout(this.searchTimeout);
+                this.searchTimeout = setTimeout(applyFilters, 300);
+            });
+        });
+
+        // Función para abrir el reglamento
+        function openReglamento() {
+            window.open('reglamento.html', '_blank');
+        }
+    </script>
 </body>
 </html>
