@@ -821,6 +821,56 @@
         </div>
     </header>
 
+    <style>
+        /* Responsive header improvements */
+        @media (max-width: 768px) {
+            .header-actions {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+                gap: 0.3rem;
+            }
+            
+            .cart-badge {
+                width: 18px;
+                height: 18px;
+                font-size: 0.6rem;
+                top: -6px;
+                right: -6px;
+            }
+            
+            .btn-text {
+                font-size: 0.75rem;
+            }
+        }
+        
+        /* For very small screens */
+        @media (max-width: 480px) {
+            .header-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .btn {
+                padding: 0.4rem 0.7rem;
+                font-size: 0.75rem;
+            }
+            
+            .logo h1 {
+                font-size: 1.3rem;
+            }
+            
+            .logo i {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+
     <!-- Container principal -->
     <div class="main-container">
         <!-- Información del evento -->
